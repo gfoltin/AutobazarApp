@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "AutobazarFrontend"
+    }
+  },
+  "defaultProject": "AutobazarFrontend",
+  "cli": {
+    "analytics": "c26ab334-a258-4283-b540-4b7aa4af9a69"
+  }
 }
