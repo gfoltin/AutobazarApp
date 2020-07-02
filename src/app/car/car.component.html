@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="alert alert-warning" *ngIf="carForm.dirty && carForm.invalid">Enter valid values</div>
+    <div class="alert alert-warning" *ngIf="carForm.dirty && description.invalid">Enter atleast 5 characters of description</div>
+    <form (ngSubmit)="!carForm.invalid && saveCar()" #carForm="ngForm">
+        <fieldset class="form-group">
+            <label>Name</label>
+            <input type="text" [(ngModel)]="car.name" #name="ngModel" class="form-control" name="name" required="required">
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Color</label>
+            <input type="text" [(ngModel)]="car.color" #color="ngModel" class="form-control" name="color" required="required">
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Engine</label>
+            <input type="text" [(ngModel)]="car.engine" #engine="ngModel" class="form-control" name="engine" required="required">
+        </fieldset>    
+        <fieldset class="form-group">
+            <label>Description</label>
+            <input type="text" [(ngModel)]="car.description" #description="ngModel" class="form-control" name="description" minlength="5">
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Available</label>
+            <br>
+                <label class="radio-inline mr-4">
+                    <input type="radio" value="Yes" name="available" [(ngModel)]="car.available">
+                    Yes
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" value="Not" name="available" [(ngModel)]="car.available">
+                    Not
+                </label>
+        </fieldset>
+        <button type="submit" class="btn btn-success">Save</button>
+    </form>
+</div>

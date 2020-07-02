@@ -1,0 +1,17 @@
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary shadow p-3 mb-5 rounded">
+        <div class="navbar-brand">Autobazar</div>
+        <ul class="navbar-nav navbar-collapse">
+            <li class="nav-item"><a class="nav-link" routerLink="/home/username" routerLinkActive="active" *ngIf="basicAuthService.isUserLoggedIn()">Home</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/cars" routerLinkActive="active" *ngIf="basicAuthService.isUserLoggedIn()">All Cars</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/usercars" routerLinkActive="active" *ngIf="basicAuthService.isUserLoggedIn()">My Cars</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/about" routerLinkActive="active" *ngIf="basicAuthService.isUserLoggedIn()">About</a></li>
+        </ul>
+        <ul class="navbar-nav navbar-collapse justify-content-end">
+            <li class="nav-item name-show" *ngIf="basicAuthService.isUserLoggedIn()">Logged as: {{username}}</li>
+            <li class="nav-item"><a class="nav-link" routerLink="/login" routerLinkActive="active" *ngIf="!basicAuthService.isUserLoggedIn()">Login</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/register" routerLinkActive="active" *ngIf="!basicAuthService.isUserLoggedIn()">Register</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/logout" routerLinkActive="active" *ngIf="basicAuthService.isUserLoggedIn()">Logout</a></li>
+        </ul>
+    </nav>
+</header>

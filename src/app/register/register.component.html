@@ -1,0 +1,33 @@
+<h2 class="text-center">Sign Up</h2>
+
+<div class="container col-md-4">
+    <form (ngSubmit)="!registerForm.invalid && saveUser()" #registerForm="ngForm">
+        <fieldset>
+            <div class="form-group">
+                <label>Enter Username:</label>
+                <input type="text" name="username" [(ngModel)]="user.username" placeholder="Username" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Enter Password:</label>
+                <input type="password" [(ngModel)]="user.password" name="password" placeholder="Password" class="form-control" required #password="ngModel" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" />
+                <div *ngIf="password.invalid && (registerForm.submitted || password.touched)" class="alert alert-danger">
+                    <div *ngIf="password.errors.required"> Password is required. </div>
+                    <div *ngIf="password.errors.pattern"> Must contain at least one number, one uppercase, one lowercase letter and at least 8 or more characters.</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Re-Enter Password:</label>
+                <input type="password" [(ngModel)]="confirmpassword" name="confirmpassword" placeholder="Confirm Password" class="form-control" required #confirmedpassword="ngModel" pattern="{{ password.value }}" />
+                <div *ngIf="confirmedpassword.invalid && (registerForm.submitted || confirmedpassword.touched)" class="alert alert-danger">
+                    <div *ngIf="confirmedpassword.errors.required"> Confirm password is required. </div>
+                    <div *ngIf="confirmedpassword.errors.pattern"> Password & Confirm Password does not match.</div>
+                </div>
+            </div>
+        </fieldset>   
+        <button type="submit" class="btn btn-success col-md">Register</button> 
+    </form>
+</div>
+
+
+
+   
