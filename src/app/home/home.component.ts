@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BasicAuthService } from '../service/basic-auth.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,10 +10,10 @@ export class HomeComponent implements OnInit {
 
   name: string = '';
 
-  constructor(private basicAuthService: BasicAuthService) { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.name = this.basicAuthService.getAuthenticatedUser();
+    this.name = this.route.snapshot.params['name'];
   }
 
 }

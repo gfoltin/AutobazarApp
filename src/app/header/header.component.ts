@@ -13,6 +13,10 @@ export class HeaderComponent implements OnInit {
   constructor(public basicAuthService: BasicAuthService) { }
 
   ngOnInit(): void {
+    this.refreshUsername();
+  }
+
+  public refreshUsername(){
     this.username = this.basicAuthService.getAuthenticatedUser();
   }
 

@@ -10,7 +10,8 @@ export class Car {
     public name: string,
     public color: string,
     public engine: string,
-    public description: string, 
+    public price: string,
+    public email: string,
     public available: string,
     ){
   }

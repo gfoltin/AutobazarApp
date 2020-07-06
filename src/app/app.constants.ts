@@ -1,1 +1,1 @@
-export const API_URL = "https://autobazar-backend.herokuapp.com";
+export const API_URL = "http://localhost:8080"; //https://autobazar-backend.herokuapp.com

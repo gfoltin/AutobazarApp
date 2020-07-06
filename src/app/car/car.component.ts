@@ -19,7 +19,7 @@ export class CarComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.params["id"];
     this.username = this.route.snapshot.params["name"];
-    this.car = new Car(this.id, this.username, "", "", "", "", "");
+    this.car = new Car(this.id, this.username, "", "", "", "", "", "");
 
     if (this.id != -1){
       this.carService.retrieveCar(this.username, this.id).subscribe(

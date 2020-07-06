@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { BasicAuthService } from '../service/basic-auth.service';
-import { HttpResponse } from '@angular/common/http';
-import { Config } from 'protractor';
 
 @Component({
   selector: 'app-login',
@@ -19,6 +17,7 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router, private basicAuthService: BasicAuthService) { }
 
   ngOnInit(): void {
+    this.router.navigate(['login']);
   }
 
   handleLogin(){
