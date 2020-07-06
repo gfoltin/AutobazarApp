@@ -46,10 +46,10 @@ export class CarListUserComponent implements OnInit {
     this.router.navigate(["cars", id, this.basicAuthService.getAuthenticatedUser()]);
   }
 
-  deleteCar(id){
+  deleteCar(name, id){
     this.carService.deleteCar(this.basicAuthService.getAuthenticatedUser(), id).subscribe(
       response => {
-        this.message = `Delete of car ${id} was successful.`;
+        this.message = `Delete of car ${name} was successful.`;
         this.refreshCars();
       }
     );

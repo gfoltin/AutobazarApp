@@ -21,7 +21,7 @@
                 <td class="align-middle">{{car.available}}</td>
                 <td class="align-middle">
                     <button (click)="updateCar(car.id)" class="btn btn-success mr-3">Update</button>
-                    <button (click)="deleteCar(car.id)" class="btn btn-warning">Delete</button>
+                    <button (click)="deleteCar(car.name, car.id)" class="btn btn-warning">Delete</button>
                 </td>
             </tr>
         </tbody>
