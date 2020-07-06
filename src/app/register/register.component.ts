@@ -27,10 +27,10 @@ export class RegisterComponent implements OnInit {
   }
 
   saveUser(){
-    alert('User successfully registered');
     this.registerService.addUser(this.user).subscribe(
       data => {
         this.router.navigate(['login']);
+        alert('User successfully registered');
       }
     );
   }
