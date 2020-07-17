@@ -29,6 +29,7 @@ export class CarComponent implements OnInit {
   }
 
   saveCar(){
+    if(this.car.available === "") this.car.available = "Not";
     if(this.id == -1){
       this.carService.createCar(this.username, this.car).subscribe(
         data => {

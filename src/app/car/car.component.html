@@ -1,37 +1,60 @@
 <div class="container col-md-7">
-    <div class="alert alert-warning" *ngIf="carForm.dirty && carForm.invalid">Enter valid values</div>
     <form (ngSubmit)="!carForm.invalid && saveCar()" #carForm="ngForm">
-        <fieldset class="form-group">
-            <label>Name</label>
-            <input type="text" [(ngModel)]="car.name" #name="ngModel" class="form-control" name="name" required="required">
-        </fieldset>
-        <fieldset class="form-group">
-            <label>Color</label>
-            <input type="text" [(ngModel)]="car.color" #color="ngModel" class="form-control" name="color" required="required">
-        </fieldset>
-        <fieldset class="form-group">
-            <label>Engine</label>
-            <input type="text" [(ngModel)]="car.engine" #engine="ngModel" class="form-control" name="engine" required="required">
-        </fieldset>    
-        <fieldset class="form-group">
-            <label>Price</label>
-            <input type="text" [(ngModel)]="car.price" #price="ngModel" class="form-control" name="price">
-        </fieldset>
-        <fieldset class="form-group">
-            <label>Email</label>
-            <input type="email" [(ngModel)]="car.email" #email="ngModel" class="form-control" name="email">
+        <fieldset>
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" [(ngModel)]="car.name" #name="ngModel" class="form-control" name="name" required minlength="5" placeholder="Car name">
+                <div *ngIf="name.invalid && (carForm.submitted || name.touched)" class="alert alert-warning">
+                    <div *ngIf="name.errors.required"> Name is required. </div>
+                    <div *ngIf="name.errors.minlength"> Name must have minimum length of 5. </div>
+                </div>
+            </div>
+            <div class="form-group">   
+                <label>Color</label>
+                <input type="text" [(ngModel)]="car.color" #color="ngModel" class="form-control" name="color" required minlength="3" placeholder="Car color">
+                <div *ngIf="color.invalid && (carForm.submitted || color.touched)" class="alert alert-warning">
+                    <div *ngIf="color.errors.required"> Color is required. </div>
+                    <div *ngIf="color.errors.minlength"> Color must have minimum length of 3. </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Engine</label>
+                <input type="text" [(ngModel)]="car.engine" #engine="ngModel" class="form-control" name="engine" required minlength="3" placeholder="Engine of car">
+                <div *ngIf="engine.invalid && (carForm.submitted || engine.touched)" class="alert alert-warning">
+                    <div *ngIf="engine.errors.required"> Engine is required. </div>
+                    <div *ngIf="engine.errors.minlength"> Engine must have minimum length of 3. </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Price</label>
+                <input type="text" [(ngModel)]="car.price" #price="ngModel" class="form-control" name="price" required placeholder="€">
+                <div *ngIf="price.invalid && (carForm.submitted || price.touched)" class="alert alert-warning">
+                    <div *ngIf="price.errors.required"> Price is required. </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" [(ngModel)]="car.email" #email="ngModel" class="form-control" name="email" required minlength="5" placeholder="example@mail.com">
+                <div *ngIf="email.invalid && (carForm.submitted || email.touched)" class="alert alert-warning">
+                    <div *ngIf="email.errors.required"> Email is required. </div>
+                    <div *ngIf="email.errors.minlength"> Email must have minimum length of 5. </div>
+                </div>
+            </div>
         </fieldset>
         <fieldset class="form-group">
             <label>Available</label>
             <br>
                 <label class="radio-inline mr-4">
-                    <input type="radio" value="Yes" name="available" [(ngModel)]="car.available">
+                    <input type="radio" value="Yes" name="available" [(ngModel)]="car.available" required #available="ngModel">
                     Yes
                 </label>
                 <label class="radio-inline">
-                    <input type="radio" value="Not" name="available" [(ngModel)]="car.available">
+                    <input type="radio" value="Not" name="available" [(ngModel)]="car.available" required #available="ngModel">
                     Not
                 </label>
+                <div *ngIf="available.invalid && (carForm.submitted || available.touched)" class="alert alert-warning">
+                    <div *ngIf="available.errors.required"> Availablity is required. </div>
+                </div>
         </fieldset>
         <button type="submit" class="btn btn-success">Save</button>
     </form>

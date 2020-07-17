@@ -1,20 +1,24 @@
 <h2 class="text-center">Login</h2>
 
 <div class="container col-md-3">
-    <form>
+    <form (ngSubmit)="!loginForm.invalid && handleLogin()" #loginForm="ngForm">
         <fieldset>
             <div class="alert alert-warning" *ngIf="invalidLogin">{{errorMessage}}</div>
-                <div class="form-group row">
-                    <label class="col col-form-label">Username:</label>
-                    <input type="text" name="username" [(ngModel)]="username" placeholder="username" class="form-control">
+                <div class="form-group">
+                    <label>Username:</label>
+                    <input type="text" name="username" [(ngModel)]="username" placeholder="Username" class="form-control" required #usernameCheck="ngModel">
+                    <div *ngIf="usernameCheck.invalid && usernameCheck.touched" class="alert alert-warning">
+                        <div *ngIf="usernameCheck.errors.required"> Username is required. </div>
+                    </div>
                 </div>
-                <div class="form-group row">
-                    <label class="col col-form-label">Password:</label>
-                    <input type="password" name="password" [(ngModel)]="password" class="form-control">
+                <div class="form-group">
+                    <label>Password:</label>
+                    <input type="password" name="password" [(ngModel)]="password" class="form-control" required #passwordCheck="ngModel">
+                    <div *ngIf="passwordCheck.invalid && passwordCheck.touched" class="alert alert-warning">
+                        <div *ngIf="passwordCheck.errors.required"> Password is required. </div>
+                    </div>
                 </div>
         </fieldset>
-        <div class="form-group row">
-            <button class="btn btn-success col-md" (click)="handleLogin()">Login</button>
-        </div>
+        <button class="btn btn-success col-md">Login</button>
     </form>
 </div>
